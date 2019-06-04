@@ -3,38 +3,38 @@
   "version": 1,
   "newProjectRoot": "",
   "projects": {
-    "angular-conf": {
+    "tour-of-heroes": {
       "projectType": "application",
       "schematics": {
         "@nrwl/workspace:component": {
           "style": "scss"
         }
       },
-      "root": "apps/angular-conf",
-      "sourceRoot": "apps/angular-conf/src",
-      "prefix": "angular-conf",
+      "root": "apps/tour-of-heroes",
+      "sourceRoot": "apps/tour-of-heroes/src",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/angular-conf",
-            "index": "apps/angular-conf/src/index.html",
-            "main": "apps/angular-conf/src/main.ts",
-            "polyfills": "apps/angular-conf/src/polyfills.ts",
-            "tsConfig": "apps/angular-conf/tsconfig.app.json",
+            "outputPath": "dist/apps/tour-of-heroes",
+            "index": "apps/tour-of-heroes/src/index.html",
+            "main": "apps/tour-of-heroes/src/main.ts",
+            "polyfills": "apps/tour-of-heroes/src/polyfills.ts",
+            "tsConfig": "apps/tour-of-heroes/tsconfig.app.json",
             "assets": [
-              "apps/angular-conf/src/favicon.ico",
-              "apps/angular-conf/src/assets"
+              "apps/tour-of-heroes/src/favicon.ico",
+              "apps/tour-of-heroes/src/assets"
             ],
-            "styles": ["apps/angular-conf/src/styles.scss"],
+            "styles": ["apps/tour-of-heroes/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/angular-conf/src/environments/environment.ts",
-                  "with": "apps/angular-conf/src/environments/environment.prod.ts"
+                  "replace": "apps/tour-of-heroes/src/environments/environment.ts",
+                  "with": "apps/tour-of-heroes/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -59,26 +59,26 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-conf:build"
+            "browserTarget": "tour-of-heroes:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-conf:build:production"
+              "browserTarget": "tour-of-heroes:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-conf:build"
+            "browserTarget": "tour-of-heroes:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/angular-conf/tsconfig.app.json",
-              "apps/angular-conf/tsconfig.spec.json"
+              "apps/tour-of-heroes/tsconfig.app.json",
+              "apps/tour-of-heroes/tsconfig.spec.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
@@ -86,35 +86,35 @@
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/angular-conf/jest.config.js",
-            "tsConfig": "apps/angular-conf/tsconfig.spec.json",
-            "setupFile": "apps/angular-conf/src/test-setup.ts"
+            "jestConfig": "apps/tour-of-heroes/jest.config.js",
+            "tsConfig": "apps/tour-of-heroes/tsconfig.spec.json",
+            "setupFile": "apps/tour-of-heroes/src/test-setup.ts"
           }
         }
       }
     },
-    "angular-conf-e2e": {
-      "root": "apps/angular-conf-e2e",
-      "sourceRoot": "apps/angular-conf-e2e/src",
+    "tour-of-heroes-e2e": {
+      "root": "apps/tour-of-heroes-e2e",
+      "sourceRoot": "apps/tour-of-heroes-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/angular-conf-e2e/cypress.json",
-            "tsConfig": "apps/angular-conf-e2e/tsconfig.e2e.json",
-            "devServerTarget": "angular-conf:serve"
+            "cypressConfig": "apps/tour-of-heroes-e2e/cypress.json",
+            "tsConfig": "apps/tour-of-heroes-e2e/tsconfig.e2e.json",
+            "devServerTarget": "tour-of-heroes:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-conf:serve:production"
+              "devServerTarget": "tour-of-heroes:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "apps/angular-conf-e2e/tsconfig.e2e.json"
+            "tsConfig": "apps/tour-of-heroes-e2e/tsconfig.e2e.json"
           }
         }
       }

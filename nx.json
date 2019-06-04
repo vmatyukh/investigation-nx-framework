@@ -8,11 +8,11 @@
     "nx.json": "*"
   },
   "projects": {
-    "angular-conf-e2e": {
+    "tour-of-heroes-e2e": {
       "tags": []
     },
-    "angular-conf": {
-      "tags": []
+    "tour-of-heroes": {
+      "tags": ["heroes"]
     }
   }
 }

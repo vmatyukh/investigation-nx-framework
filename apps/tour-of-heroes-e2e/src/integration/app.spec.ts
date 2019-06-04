@@ -1,9 +1,9 @@
 import { getGreeting } from '../support/app.po';
 
-describe('angular-conf', () => {
+describe('tour-of-heroes', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
-    getGreeting().contains('Welcome to angular-conf!');
+    getGreeting().contains('Welcome to tour-of-heroes!');
   });
 });
