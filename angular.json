@@ -1,38 +1,40 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "",
   "projects": {
     "angular-conf": {
-      "root": "",
-      "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
-      "schematics": {},
-      "targets": {
+      "schematics": {
+        "@nrwl/workspace:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/angular-conf",
+      "sourceRoot": "apps/angular-conf/src",
+      "prefix": "angular-conf",
+      "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-conf",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "outputPath": "dist/apps/angular-conf",
+            "index": "apps/angular-conf/src/index.html",
+            "main": "apps/angular-conf/src/main.ts",
+            "polyfills": "apps/angular-conf/src/polyfills.ts",
+            "tsConfig": "apps/angular-conf/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/angular-conf/src/favicon.ico",
+              "apps/angular-conf/src/assets"
             ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "styles": ["apps/angular-conf/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "apps/angular-conf/src/environments/environment.ts",
+                  "with": "apps/angular-conf/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -43,7 +45,14 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
@@ -64,45 +73,36 @@
             "browserTarget": "angular-conf:build"
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "apps/angular-conf/tsconfig.app.json",
+              "apps/angular-conf/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/angular-conf/jest.config.js",
+            "tsConfig": "apps/angular-conf/tsconfig.spec.json",
+            "setupFile": "apps/angular-conf/src/test-setup.ts"
           }
         }
       }
     },
     "angular-conf-e2e": {
-      "root": "e2e/",
+      "root": "apps/angular-conf-e2e",
+      "sourceRoot": "apps/angular-conf-e2e/src",
       "projectType": "application",
-      "targets": {
+      "architect": {
         "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+          "builder": "@nrwl/cypress:cypress",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "cypressConfig": "apps/angular-conf-e2e/cypress.json",
+            "tsConfig": "apps/angular-conf-e2e/tsconfig.e2e.json",
             "devServerTarget": "angular-conf:serve"
           },
           "configurations": {
@@ -114,13 +114,26 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": "apps/angular-conf-e2e/tsconfig.e2e.json"
           }
         }
       }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
     }
   },
   "defaultProject": "angular-conf"
