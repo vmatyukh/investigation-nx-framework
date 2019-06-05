@@ -8,7 +8,6 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule }     from './app-routing.module';
 
 import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './dashboard/dashboard.component';
 import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
 import { HeroesComponent }      from './heroes/heroes.component';
 import { HeroSearchComponent }  from './hero-search/hero-search.component';
@@ -32,7 +31,6 @@ import { MessagesModule } from '@app/messages';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
     HeroesComponent,
     HeroDetailComponent,
     HeroSearchComponent

@@ -118,6 +118,203 @@
           }
         }
       }
+    },
+    "data": {
+      "root": "libs/data",
+      "sourceRoot": "libs/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/data/tsconfig.lib.json",
+              "libs/data/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/data/jest.config.js",
+            "tsConfig": "libs/data/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "hero": {
+      "root": "libs/hero",
+      "sourceRoot": "libs/hero/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/hero/tsconfig.lib.json",
+              "libs/hero/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/hero/jest.config.js",
+            "tsConfig": "libs/hero/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "heroes2": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/workspace:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/heroes2",
+      "sourceRoot": "apps/heroes2/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/heroes2",
+            "index": "apps/heroes2/src/index.html",
+            "main": "apps/heroes2/src/main.ts",
+            "polyfills": "apps/heroes2/src/polyfills.ts",
+            "tsConfig": "apps/heroes2/tsconfig.app.json",
+            "assets": [
+              "apps/heroes2/src/favicon.ico",
+              "apps/heroes2/src/assets"
+            ],
+            "styles": ["apps/heroes2/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/heroes2/src/environments/environment.ts",
+                  "with": "apps/heroes2/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "heroes2:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "heroes2:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "heroes2:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/heroes2/tsconfig.app.json",
+              "apps/heroes2/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/heroes2/jest.config.js",
+            "tsConfig": "apps/heroes2/tsconfig.spec.json",
+            "setupFile": "apps/heroes2/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "heroes2-e2e": {
+      "root": "apps/heroes2-e2e",
+      "sourceRoot": "apps/heroes2-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/heroes2-e2e/cypress.json",
+            "tsConfig": "apps/heroes2-e2e/tsconfig.e2e.json",
+            "devServerTarget": "heroes2:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "heroes2:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/heroes2-e2e/tsconfig.e2e.json"
+          }
+        }
+      }
+    },
+    "messages": {
+      "projectType": "library",
+      "root": "libs/messages",
+      "sourceRoot": "libs/messages/src",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/messages/tsconfig.lib.json",
+              "libs/messages/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/messages/jest.config.js",
+            "tsConfig": "libs/messages/tsconfig.spec.json",
+            "setupFile": "libs/messages/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
@@ -136,5 +333,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "angular-conf"
+  "defaultProject": "app"
 }

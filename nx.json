@@ -1,5 +1,5 @@
 {
-  "npmScope": "angular-conf",
+  "npmScope": "app",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
@@ -13,6 +13,21 @@
     },
     "tour-of-heroes": {
       "tags": ["heroes"]
+    },
+    "data": {
+      "tags": ["data-base"]
+    },
+    "hero": {
+      "tags": ["hero"]
+    },
+    "heroes2-e2e": {
+      "tags": []
+    },
+    "heroes2": {
+      "tags": ["heroes-2"]
+    },
+    "messages": {
+      "tags": ["messages"]
     }
   }
 }
