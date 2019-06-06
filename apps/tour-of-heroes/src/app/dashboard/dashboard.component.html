@@ -1,17 +1,24 @@
-<ion-content>
-  <h3>Top Heroes</h3>
-  <ion-card *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <img [src]="hero.avatar"/>
-      <ion-card-content>
-        <ion-card-title>
-          {{hero.name}}
-        </ion-card-title>
-        <p>
-          Hero's number {{hero.id}}.
-        </p>
-      </ion-card-content>
-    </a>
-  </ion-card>
+<ion-content padding>
+  <ion-grid>
+    <h3>Top Heroes</h3>
+    <ion-row>
+      <ion-col col-sm-12 col-md-6 col-lg-4 col-xl-3
+               *ngFor="let hero of heroes">
+        <ion-card>
+          <a routerLink="/detail/{{hero.id}}">
+            <img [src]="hero.avatar"/>
+            <ion-card-content>
+              <ion-card-title>
+                {{hero.name}}
+              </ion-card-title>
+              <p>
+                Hero's number {{hero.id}}.
+              </p>
+            </ion-card-content>
+          </a>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <app-hero-search></app-hero-search>
 </ion-content>
