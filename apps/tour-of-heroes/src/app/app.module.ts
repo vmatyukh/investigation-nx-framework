@@ -2,6 +2,7 @@ import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
+import { RouteReuseStrategy } from '@angular/router';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
@@ -15,6 +16,10 @@ import { HeroSearchComponent }  from './hero-search/hero-search.component';
 import { InMemoryDataService } from '@app/data';
 import { MessagesModule } from '@app/messages';
 
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,6 +28,7 @@ import { MessagesModule } from '@app/messages';
     AppRoutingModule,
     HttpClientModule,
     MessagesModule,
+    IonicModule.forRoot(),
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -37,6 +43,11 @@ import { MessagesModule } from '@app/messages';
     HeroesComponent,
     HeroDetailComponent,
     HeroSearchComponent
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [ AppComponent ]
 })
