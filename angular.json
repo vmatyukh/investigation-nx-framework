@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "defaultProject": "app",
   "newProjectRoot": "",
   "projects": {
     "tour-of-heroes": {
@@ -89,6 +90,30 @@
             "jestConfig": "apps/tour-of-heroes/jest.config.js",
             "tsConfig": "apps/tour-of-heroes/tsconfig.spec.json",
             "setupFile": "apps/tour-of-heroes/src/test-setup.ts"
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "tour-of-heroes:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "tour-of-heroes:build:production"
+            }
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "tour-of-heroes:ionic-cordova-build",
+            "devServerTarget": "tour-of-heroes:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "tour-of-heroes:ionic-cordova-build:production",
+              "devServerTarget": "tour-of-heroes:serve:production"
+            }
           }
         }
       }
@@ -331,7 +356,12 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
+    },
+    "@ionic/angular-toolkit:component": {
+      "styleext": "scss"
+    },
+    "@ionic/angular-toolkit:page": {
+      "styleext": "scss"
     }
-  },
-  "defaultProject": "app"
+  }
 }

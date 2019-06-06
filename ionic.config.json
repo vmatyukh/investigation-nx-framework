@@ -1,0 +1,15 @@
+{
+  "defaultProject": "tour-of-heroes",
+  "projects": {
+    "tour-of-heroes": {
+      "name": "Tour Of Heroes",
+      "integrations": {},
+      "type": "angular"
+    },
+    "heroes2": {
+      "name": "Heroes 2",
+      "integrations": {},
+      "type": "angular"
+    }
+  }
+}
