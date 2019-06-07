@@ -12,7 +12,6 @@ import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
 import { HeroesComponent }      from './heroes/heroes.component';
 import { HeroSearchComponent }  from './hero-search/hero-search.component';
 import { InMemoryDataService } from '@app/data';
-import { MessagesModule } from '@app/messages';
 
 @NgModule({
   imports: [
@@ -20,7 +19,6 @@ import { MessagesModule } from '@app/messages';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MessagesModule,
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
