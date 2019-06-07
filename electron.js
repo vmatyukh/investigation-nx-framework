@@ -16,7 +16,7 @@ function createWindow () {
   })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('./apps/tour-of-heroes/index.html')
+  mainWindow.loadURL('http://localhost:4200/');
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

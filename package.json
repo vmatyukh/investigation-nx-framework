@@ -6,6 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "ng:serve": "ng serve tour-of-heroes",
     "build": "ng build",
     "test": "ng test",
     "lint": "nx lint && ng lint",
@@ -26,7 +27,8 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "electron": "electron ."
+    "electron": "npm-run-all -p ng:serve electron:serve",
+    "electron:serve": "wait-on http-get://localhost:4200/ && electron . --serve"
   },
   "private": true,
   "dependencies": {
