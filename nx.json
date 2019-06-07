@@ -12,7 +12,8 @@
       "tags": []
     },
     "tour-of-heroes": {
-      "tags": ["heroes"]
+      "tags": ["heroes"],
+      "implicitDependencies": ["messages", "hero", "data"]
     },
     "data": {
       "tags": ["data-base"]
@@ -24,7 +25,8 @@
       "tags": []
     },
     "heroes2": {
-      "tags": ["heroes-2"]
+      "tags": ["heroes-2"],
+      "implicitDependencies": ["messages", "hero", "data"]
     },
     "messages": {
       "tags": ["messages"]
